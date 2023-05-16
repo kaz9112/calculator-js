@@ -43,11 +43,34 @@ let displayScreen = document.querySelector('.display-screen h1')
 let numOne = ""
 let inputOper = ""
 let numTwo = ""
+let result = 0
 
 buttons.forEach(function(button) {
   button.addEventListener('click', function() {
-    numOne+= button.textContent
-    displayScreen.textContent = numOne
+    if (button.textContent == 'C') {
+      displayScreen.textContent = ""
+      numOne = ""
+      inputOper = ""
+      numTwo = ""
+      result = 0
+    } else if (inputOper == "" && /\d/.test(button.textContent)) {
+      numOne+= button.textContent;
+      displayScreen.textContent = numOne;
+    } 
+    else if (/[x:+-]/ig.test(button.textContent)) {
+      displayScreen.textContent = ""
+      inputOper = button.textContent
+    }
+    else if (button.textContent == "=" && numTwo != "" && inputOper != "") {
+      displayScreen.textContent = ""
+      console.log(button.textContent)
+    }
+    else if (numOne != "" && inputOper != "" && button.textContent != "=") {
+      displayScreen.textContent = ""
+      numTwo+= button.textContent;
+      displayScreen.textContent = numTwo
+    }
+    console.log("numOne: " + numOne, "oper: " + inputOper, "numTwo: " + numTwo)
   });
 });
 
