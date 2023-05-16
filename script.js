@@ -36,3 +36,22 @@ function operate(oper, x, y) {
     return 'error, operator not found!'
   }
 }
+
+
+
+
+
+
+
+
+function handleKeyDown(event) {
+  var key = event.code;
+
+  // Check if the pressed key is a numeric key
+  if (/\d/.test(key)) {
+      var numericValue = key.slice(-1);
+      console.log("Numeric key pressed: " + numericValue);
+  }
+}
+
+document.addEventListener("keydown", handleKeyDown);

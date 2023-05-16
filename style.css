@@ -16,6 +16,7 @@
 }
 
 .key-board {
+  background-color: rgb(154, 198, 211);
   display: flex;
-
+  flex: 2 1 auto;
 }
