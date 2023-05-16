@@ -37,22 +37,25 @@ function operate(oper, x, y) {
   }
 }
 
-var buttonContainer = document.querySelector('.button-container');
+var buttons = document.querySelectorAll('.button-container button');
 
-        for (var i = 0; i <= 9; i++) {
-            var button = document.createElement('button');
-            button.textContent = i;
-            buttonContainer.appendChild(button);
-        }
+let displayScreen = document.querySelector('.display-screen h1') 
+let numOne = ""
+let inputOper = ""
+let numTwo = ""
 
-function handleKeyDown(event) {
-  var key = event.code;
+buttons.forEach(function(button) {
+  button.addEventListener('click', function() {
+    numOne+= button.textContent
+    displayScreen.textContent = numOne
+  });
+});
 
-  // Check if the pressed key is a numeric key
-  if (/\d/.test(key)) {
-      var numericValue = key.slice(-1);
-      console.log("Numeric key pressed: " + numericValue);
-  }
-}
 
-document.addEventListener("keydown", handleKeyDown);
+
+// input number from above button
+// display said number in the display screen
+// when you click the operator, store number into a var
+// once you click number again after operator, you input a number again
+// once you click equal it will store the last number to another var and then calculate the results
+

@@ -1,18 +1,27 @@
 .page-container {
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   align-items: center;
   padding: 10px;
   width: 800px;
-  height: 400px;
+  height: 475px;
   margin: 100px auto;
   background-color: rgb(194, 241, 255);
 }
 
 .display-screen {
+  display: flex;
+  flex-direction: row-reverse;
   background-color:rgb(40, 52, 56);
-  width: 750px;
+  width: 500px;
   height: 65px;
+}
+
+.display-screen h1 {
+  text-align: right;
+  color:rgb(175, 180, 184);
+  margin: 12px 5px 12px 5px;
 }
 
 .key-board {
