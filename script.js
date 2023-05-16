@@ -37,12 +37,13 @@ function operate(oper, x, y) {
   }
 }
 
+var buttonContainer = document.querySelector('.button-container');
 
-
-
-
-
-
+        for (var i = 0; i <= 9; i++) {
+            var button = document.createElement('button');
+            button.textContent = i;
+            buttonContainer.appendChild(button);
+        }
 
 function handleKeyDown(event) {
   var key = event.code;
