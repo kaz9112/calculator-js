@@ -47,38 +47,50 @@ let result = 0
 
 buttons.forEach(function(button) {
   button.addEventListener('click', function() {
+
     if (button.textContent == 'C') {
-      displayScreen.textContent = ""
-      numOne = ""
-      inputOper = ""
-      numTwo = ""
-      result = 0
+      displayScreen.textContent = "";
+      numOne = "";
+      inputOper = "";
+      numTwo = "";
+      result = 0;
     } else if (inputOper == "" && /\d/.test(button.textContent)) {
       numOne+= button.textContent;
       displayScreen.textContent = numOne;
     } 
-    else if (/[x:+-]/ig.test(button.textContent)) {
-      displayScreen.textContent = ""
-      inputOper = button.textContent
+    else if (/[x:+-]/ig.test(button.textContent) && inputOper == "") {
+      displayScreen.textContent = "";
+      inputOper = button.textContent;
     }
     else if (button.textContent == "=" && numTwo != "" && inputOper != "") {
-      displayScreen.textContent = ""
-      console.log(button.textContent)
+      displayScreen.textContent = "";
+
+      if (inputOper == "+") {
+        result = add(Number(numOne), Number(numTwo));
+        displayScreen.textContent = result
+      }
+      else if (inputOper == "-") {
+        result = subtract(Number(numOne), Number(numTwo));
+        displayScreen.textContent = result
+      }
+      else if (inputOper == "X") {
+        result = mult(Number(numOne), Number(numTwo));
+        displayScreen.textContent = result
+      }
+      else if (inputOper == ":") {
+        result = divide(Number(numOne), Number(numTwo));
+        displayScreen.textContent = result
+      }
+      numOne = result;
+      inputOper = "";
+      numTwo = "";
+
     }
     else if (numOne != "" && inputOper != "" && button.textContent != "=") {
-      displayScreen.textContent = ""
+      displayScreen.textContent = "";
       numTwo+= button.textContent;
-      displayScreen.textContent = numTwo
+      displayScreen.textContent = numTwo;
     }
-    console.log("numOne: " + numOne, "oper: " + inputOper, "numTwo: " + numTwo)
+    console.log("numOne: " + numOne, "oper: " + inputOper, "numTwo: " + numTwo);
   });
 });
-
-
-
-// input number from above button
-// display said number in the display screen
-// when you click the operator, store number into a var
-// once you click number again after operator, you input a number again
-// once you click equal it will store the last number to another var and then calculate the results
-
